@@ -18,7 +18,7 @@ public class SecondMain {
         List<String> names = people.stream()
                 .filter(person -> person.getName() != null)
                 .flatMap(person -> Stream.of(person.getMama(), person.getPapa()))
-                .filter(parentsList -> parentsList.length() > 6)
+                .filter(parentsName -> parentsName.length() > 6)
                 .toList();
         System.out.println(names);
 
