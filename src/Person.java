@@ -2,13 +2,35 @@ import java.util.Objects;
 
 public class Person {
     private String name;
-    private String mama;
-    private String papa;
+    private Person mom;
+    private Person dad;
 
-    public Person(String name, String mama, String papa) {
+    public Person(String name, Person mom, Person dad) {
         this.name = name;
-        this.mama = mama;
-        this.papa = papa;
+        this.mom = mom;
+        this.dad = dad;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(name, person.name) && Objects.equals(mom, person.mom) && Objects.equals(dad, person.dad);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, mom, dad);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", mom=" + mom +
+                ", dad=" + dad +
+                '}';
     }
 
     public String getName() {
@@ -19,41 +41,20 @@ public class Person {
         this.name = name;
     }
 
-    public String getMama() {
-        return mama;
+    public Person getMom() {
+        return mom;
     }
 
-    public void setMama(String mama) {
-        this.mama = mama;
+    public void setMom(Person mom) {
+        this.mom = mom;
     }
 
-    public String getPapa() {
-        return papa;
+    public Person getDad() {
+        return dad;
     }
 
-    public void setPapa(String papa) {
-        this.papa = papa;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(name, person.name) && Objects.equals(mama, person.mama) && Objects.equals(papa, person.papa);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, mama, papa);
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "name='" + name + '\'' +
-                ", mama='" + mama + '\'' +
-                ", papa='" + papa + '\'' +
-                '}';
+    public void setDad(Person dad) {
+        this.dad = dad;
     }
 }
+
